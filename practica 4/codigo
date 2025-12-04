@@ -1,0 +1,74 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void imprimir_arreglo(int *arr, int size, const char *nombre) {
+    printf("\n--- Contenido de %s (Tamaño %d) ---\n", nombre, size);
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int n, m;
+
+    printf("--- Paso 1: malloc ---\n");
+    printf("¿Cuántos enteros quiere almacenar con malloc? ");
+    scanf("%d", &n);
+
+    int *arr = (int *)malloc(n * sizeof(int));
+    if (arr == NULL) return 1;
+
+    printf("Valores iniciales de arr (malloc):");
+    imprimir_arreglo(arr, n, "arr (malloc)");
+
+    printf("\n--- Paso 2: calloc ---\n");
+    int *arr2 = (int *)calloc(n, sizeof(int));
+    if (arr2 == NULL) {
+        free(arr);
+        return 1;
+    }
+
+    printf("Valores iniciales de arr2 (calloc):");
+    imprimir_arreglo(arr2, n, "arr2 (calloc)");
+
+    printf("\n--- Paso 3: Llenar el arreglo arr2 ---\n");
+    printf("Ingrese %d valores enteros para arr2:\n", n);
+    for (int i = 0; i < n; i++) {
+        printf("arr2[%d]: ", i);
+        scanf("%d", &arr2[i]);
+    }
+    imprimir_arreglo(arr2, n, "arr2 (Lleno)");
+
+    printf("\n--- Paso 4: Redimensionar con realloc ---\n");
+    printf("Ingrese el nuevo tamaño 'm' para arr2: ");
+    scanf("%d", &m);
+
+    int old_size = n;
+    n = m;
+
+    int *temp = (int *)realloc(arr2, n * sizeof(int));
+    if (temp == NULL) {
+        printf("Error: Fallo en realloc.\n");
+    } else {
+        arr2 = temp;
+        printf("El arreglo arr2 ha sido redimensionado a un tamaño de %d.\n", n);
+
+        if (n > old_size) {
+            printf("\nSe necesitan ingresar %d valores adicionales:\n", n - old_size);
+            for (int i = old_size; i < n; i++) {
+                printf("arr2[%d]: ", i);
+                scanf("%d", &arr2[i]);
+            }
+        }
+        
+        imprimir_arreglo(arr2, n, "arr2 (Redimensionado)");
+    }
+
+    printf("\n--- Paso 5: Liberar memoria ---\n");
+    free(arr);
+    free(arr2);
+    printf("Memoria liberada correctamente.\n");
+
+    return 0;
+}
