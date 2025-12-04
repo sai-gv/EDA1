@@ -1,0 +1,13 @@
+1. Diferencia en el orden de salida (Pila vs. Cola):
+- Pila: Sigue el principio LIFO (Last In, First Out). El orden de salida es la inversa del orden de entrada, ya que el último elemento que entra es el primero que se extrae.
+- Cola: Sigue el principio FIFO (First In, First Out). El orden de salida es idéntico al orden de entrada, pues el elemento más antiguo es el primero en ser procesado.
+
+2. Extracción en estructuras vacías (pop/dequeue):
+- Si intento extraer algo, provoco una condición de Underflow (Subdesbordamiento).
+- Es vital que el código use una verificación de control (ej., comparando 'frente' y 'final' en la cola) para evitar esto.
+- Si no manejo el Underflow, accedo a un índice inválido en el arreglo, lo que resulta en la devolución de basura o un fallo de Segmentación.
+
+3. Inserción con capacidad máxima excedida:
+- Si fuerzo la inserción en una estructura llena, ocurre un Overflow (Desbordamiento).
+- Debo verificar si el índice de inserción ha alcanzado el límite predefinido (MAX).
+- Si ignoro la verificación, se produce un desbordamiento de búfer, corrompiendo datos adyacentes en memoria y pudiendo crashear el programa.
