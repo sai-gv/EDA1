@@ -1,0 +1,10 @@
+1. Cola Circular (Reciclaje de Posiciones):
+- La razón de que no se desperdicie espacio como en la cola lineal es la **aritmética modular** (la operación % MAX).
+- Esto permite que el índice 'final', al llegar al tope del arreglo, **vuelva a la posición 0** y reutilice los espacios que el índice 'frente' ya liberó, completando el ciclo.
+- Si el índice 'final' llega al final, se ejecuta el módulo y **vuelve a cero**.
+- Si intento encolar estando llena, se dispara **Overflow** y la inserción se rechaza.
+
+2. Cola Doble (Deque):
+- La diferencia es que la cola circular normal solo hace FIFO, pero el **Deque** permite **inserción y eliminación por ambos lados** (frente y final).
+- Se pueden simular las dos estructuras: **FIFO** con `insert_rear()` y `delete_front()`, y **LIFO** con `insert_front()` y `delete_front()`.
+- Se usa mucho en **algoritmos de búsqueda (BFS)** y en sistemas paralelos para **robo de trabajo** (*work stealing*).
