@@ -1,0 +1,7 @@
+1. ¿Por qué las listas enlazadas no requieren tamaño fijo como los arreglos?
+- Las listas son estructuras dinámicas puras. Cada nodo se gestiona individualmente en el Heap vía malloc() y free() en tiempo de ejecución.
+- Esto permite que la lista se escale dinámicamente, creciendo o encogiéndose según los requisitos de memoria, sin necesidad de un compromiso inicial de espacio.
+
+2. ¿Qué diferencia hay entre mover la cabeza y modificar los punteros internos?
+- Mover la Cabeza: Es una operación O(1) (tiempo constante). Ocurre solo al insertar o eliminar el nodo raíz e implica solo reasignar el puntero 'cabeza'.
+- Modificar Punteros Internos: Es una operación O(n). Requiere recorrer la lista para encontrar el nodo 'anterior' al objetivo y luego se hace el re-enlace (anterior->siguiente = actual->siguiente;) para saltar el nodo.
