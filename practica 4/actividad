@@ -1,0 +1,10 @@
+1. Diferencia entre malloc y calloc:
+- malloc: Reserva la memoria, pero deja valores basura (aleatorios).
+- calloc: Reserva la memoria y la inicializa completamente en ceros.
+
+2. Efectos del redimensionador realloc:
+- Tamaño mayor (m > n): Aumenta la memoria. Si no hay espacio contiguo, mueve el bloque completo a una nueva ubicación.
+- Tamaño menor (m < n): La memoria utilizada se reduce.
+
+3. Olvidar llamar a free:
+- Ocurre un "Memory Leak" o fuga de memoria. El programa acumula memoria reservada sin liberarla, pudiendo causar fallos en el código o en el dispositivo.
