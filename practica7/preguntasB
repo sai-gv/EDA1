@@ -1,0 +1,11 @@
+1. ¿Qué ventaja tiene la lista circular frente a la simple?
+- La ventaja fundamental es la eficiencia al acceder a los extremos (inicio y final) desde cualquier punto.
+- Esto elimina la necesidad de recorridos lineales (O(n)) para operaciones que requieren "dar la vuelta", lo cual es clave para el recorrido continuo.
+
+2. ¿Qué error puede causar un bucle infinito en una lista circular?
+- El error clásico es la condición de parada incorrecta: usar 'while (actual != NULL)'.
+- Esto provoca un bucle infinito porque jamás se alcanza NULL; la única forma correcta de iterar es detenerse cuando el puntero 'actual' vuelve a ser la 'cabeza'.
+
+3. ¿Qué estructuras o programas del mundo real se basan en listas circulares?
+- Sistemas Operativos: Se usan en el algoritmo Round Robin para dar turnos de ejecución a los procesos.
+- Aplicaciones de Interfaz: Se usan para carouseles de imágenes o la navegación cíclica de menús.
